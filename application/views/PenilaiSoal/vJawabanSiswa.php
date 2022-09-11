@@ -33,7 +33,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Penilaian Nilai Raport</h3>
+                            <h3 class="card-title">Penilaian Tes Tulis</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -59,18 +59,34 @@
                                             <td><?= $value->nama_siswa ?></td>
                                             <td><?= $value->tempat_lahir ?> <?= $value->tanggal_lahir ?></td>
                                             <td><?php
-                                                if ($value->nilai_ing == 0) {
+                                                if ($value->tes_tulis == 0) {
                                                 ?>
-                                                    <span class="badge badge-danger">Belum Valid</span>
+                                                    <span class="badge badge-danger">Belum Ada Penilaian Test</span>
+                                                <?php
+                                                } else if ($value->tes_tulis == 1) {
+                                                ?>
+                                                    <span class="badge badge-info">Menunggu Penilaian</span>
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <span class="badge badge-success">Sudah Valid</span>
+                                                    <span class="badge badge-success">Sudah Test</span>
                                                 <?php
                                                 }
                                                 ?>
                                             </td>
-                                            <td class="text-center"> <a href="<?= base_url('Admin/cPenilaian/nilai_raport/' . $value->id_dt_siswa) ?>" class="btn btn-block btn-success"><i class="fas fa-user-cog"></i></a>
+                                            <td class="text-center">
+                                                <?php
+                                                if ($value->tes_tulis == 1) {
+                                                ?>
+                                                    <a href="<?= base_url('PenilaiSoal/cPenilaian/nilai_tes_tulis/' . $value->id_dt_siswa) ?>" class="btn btn-block btn-warning"><i class="fas fa-user-cog"></i></a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <a href="#" class="btn btn-block btn-warning"><i class="fas fa-user-cog"></i></a>
+                                                <?php
+                                                }
+                                                ?>
+
 
                                             </td>
                                         </tr>
@@ -97,9 +113,6 @@
                 </div>
                 <!-- /.col -->
             </div>
-
-
-
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->

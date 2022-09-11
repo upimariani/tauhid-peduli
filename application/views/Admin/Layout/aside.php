@@ -51,7 +51,7 @@
                                                                                         echo 'active';
                                                                                     }  ?>">
                         <i class="nav-icon fas fa-tasks"></i>
-                        <p>Penilaian</p>
+                        <p>Nilai Raport</p>
                     </a>
                 </li>
                 <li class="nav-item">

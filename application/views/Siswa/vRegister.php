@@ -25,7 +25,15 @@
         <div class="register-logo">
             <a href="<?= base_url('asset/AdminLTE/') ?>index2.html"><b>Register</b>Siswa</a>
         </div>
-
+        <?php if ($this->session->userdata('error')) {
+        ?>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                <?= $this->session->userdata('error') ?>
+            </div>
+        <?php
+        } ?>
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new akun</p>
@@ -33,7 +41,7 @@
                 <form action="<?= base_url('Siswa/cAuthSiswa/register') ?>" method="post">
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
-                        <input type="text" name="nama" class="form-control" placeholder="Enter name">
+                        <input type="text" value="<?= set_value('nama') ?>" name="nama" class="form-control" placeholder="Enter name">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -55,7 +63,7 @@
                     </div>
                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
-                        <input name="alamat" type="text" class="form-control" placeholder="Enter address">
+                        <input name="alamat" type="text" value="<?= set_value('alamat') ?>" class="form-control" placeholder="Enter address">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-map-marker"></span>
@@ -64,7 +72,7 @@
                     </div>
                     <?= form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
-                        <input type="text" name="no_hp" class="form-control" placeholder="Enter Number Phone">
+                        <input type="text" name="no_hp" value="<?= set_value('no_hp') ?>" class="form-control" placeholder="Enter Number Phone">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-phone"></span>
@@ -73,7 +81,7 @@
                     </div>
                     <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Enter Username">
+                        <input type="text" name="username" value="<?= set_value('username') ?>" class="form-control" placeholder="Enter Username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-users-cog"></span>
@@ -82,7 +90,7 @@
                     </div>
                     <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" value="<?= set_value('password') ?>" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -91,7 +99,7 @@
                     </div>
                     <?= form_error('kon_password', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
-                        <input type="password" name="kon_password" class="form-control" placeholder="Retype password">
+                        <input type="password" name="kon_password" value="<?= set_value('kon_password') ?>" class="form-control" placeholder="Retype password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

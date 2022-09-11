@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <strong>DAARUT TAUHID PEDULI</strong>
+    <strong>SPK DAARUT TAUHID PEDULI</strong>
 
 </footer>
 
@@ -45,13 +45,7 @@ AdminLTE App
 <script src="<?= base_url('asset/AdminLTE/') ?>dist/js/demo.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/select2/js/select2.full.min.js"></script>
 <!-- page script -->
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/summernote/summernote-bs4.min.js"></script>
-<script>
-    $(function() {
-        // Summernote
-        $('.textarea').summernote()
-    })
-</script>
+
 <script>
     $(function() {
         //Initialize Select2 Elements
@@ -69,6 +63,14 @@ AdminLTE App
         //Date range picker
         $('#reservationdate').datetimepicker({
             format: 'YYYY-MM-DD'
+        });
+    });
+</script>
+<script>
+    $(function() {
+        $(".example1").DataTable({
+            "responsive": true,
+            "autoWidth": false,
         });
     });
 </script>

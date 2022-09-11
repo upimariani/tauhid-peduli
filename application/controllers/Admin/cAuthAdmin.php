@@ -29,7 +29,13 @@ class cAuthAdmin extends CI_Controller
                 );
 
                 $this->session->set_userdata($array);
-                redirect('Admin/cDashboard');
+                if ($login->level == '1') {
+                    redirect('Admin/cDashboard');
+                } else if ($login->level == '2') {
+                    redirect('PengujiAlQuran/cDashboard');
+                } else {
+                    redirect('PengujiWawancara/cDashboard');
+                }
             } else {
                 $this->session->set_flashdata('error', 'Username dan Password Salah!!!');
                 redirect('Admin/cAuthAdmin');

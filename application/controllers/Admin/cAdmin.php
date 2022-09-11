@@ -28,6 +28,7 @@ class cAdmin extends CI_Controller
             'no_hp_admin' => $this->input->post('no_hp'),
             'username_admin' => $this->input->post('username'),
             'password_admin' => $this->input->post('password'),
+            'level' => $this->input->post('level')
         );
         $this->mAdmin->insert($data);
         $this->session->set_flashdata('success', 'Data Admin Berhasil Ditambahkan!');
@@ -41,6 +42,7 @@ class cAdmin extends CI_Controller
             'no_hp_admin' => $this->input->post('no_hp'),
             'username_admin' => $this->input->post('username'),
             'password_admin' => $this->input->post('password'),
+            'level' => $this->input->post('level')
         );
         $this->mAdmin->update($id, $data);
         $this->session->set_flashdata('success', 'Data Admin Berhasil Diperbaharui!');

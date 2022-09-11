@@ -33,7 +33,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Penilaian Nilai Raport</h3>
+                            <h3 class="card-title">Penilaian Tes Al - Qur'an</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -59,19 +59,21 @@
                                             <td><?= $value->nama_siswa ?></td>
                                             <td><?= $value->tempat_lahir ?> <?= $value->tanggal_lahir ?></td>
                                             <td><?php
-                                                if ($value->nilai_ing == 0) {
+                                                if ($value->tes_baca == 0) {
                                                 ?>
-                                                    <span class="badge badge-danger">Belum Valid</span>
+                                                    <span class="badge badge-danger">Belum Melakukan Tes Baca Al-Qur'an</span>
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <span class="badge badge-success">Sudah Valid</span>
+                                                    <span class="badge badge-success">Sudah Test</span>
                                                 <?php
                                                 }
                                                 ?>
                                             </td>
-                                            <td class="text-center"> <a href="<?= base_url('Admin/cPenilaian/nilai_raport/' . $value->id_dt_siswa) ?>" class="btn btn-block btn-success"><i class="fas fa-user-cog"></i></a>
-
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#tes_alquran<?= $value->id_dt_siswa ?>">
+                                                    <i class="fas fa-user-cog"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     <?php
@@ -97,12 +99,54 @@
                 </div>
                 <!-- /.col -->
             </div>
-
-
-
-            <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
+<?php
+foreach ($siswa as $key => $value) {
+?>
+    <div class="modal fade" id="tes_alquran<?= $value->id_dt_siswa ?>">
+        <div class="modal-dialog">
+            <form action="<?= base_url('PengujiAlQuran/cPenilaianAlQuran/nilai_baca/' . $value->id_dt_siswa) ?>" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Penilaian Membaca Al-Qur'an</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nilai</label>
+                            <select name="nilai_baca" class="form-control" required>
+                                <option value="" <?php if ($value->tes_baca == '') {
+                                                        echo 'selected';
+                                                    } ?>>--Pilih Penilaian---</option>
+                                <option value="70" <?php if ($value->tes_baca == '70') {
+                                                        echo 'selected';
+                                                    } ?>>70</option>
+                                <option value="80" <?php if ($value->tes_baca == '80') {
+                                                        echo 'selected';
+                                                    } ?>>80</option>
+                                <option value="90" <?php if ($value->tes_baca == '90') {
+                                                        echo 'selected';
+                                                    } ?>>90</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+<?php
+}
+?>

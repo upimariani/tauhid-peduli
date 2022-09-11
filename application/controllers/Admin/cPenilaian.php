@@ -48,64 +48,6 @@ class cPenilaian extends CI_Controller
             redirect('Admin/cPenilaian');
         }
     }
-    public function nilai_baca($id)
-    {
-        $data = array(
-            'tes_baca' => $this->input->post('nilai_baca')
-        );
-        $this->mPenilaian->nilai($id, $data);
-        $this->session->set_flashdata('success', 'Data Nilai Baca Al-Quran Berhasil Ditambahkan!');
-        redirect('Admin/cPenilaian');
-    }
-    public function nilai_wawancara($id)
-    {
-        $data = array(
-            'tes_wawancara' => $this->input->post('nilai_wawancara')
-        );
-        $this->mPenilaian->nilai($id, $data);
-        $this->session->set_flashdata('success', 'Data Nilai Wawancara Berhasil Ditambahkan!');
-        redirect('Admin/cPenilaian');
-    }
-    public function nilai_tes_tulis($id)
-    {
-        $data = array(
-            'siswa_view' => $this->mPenilaian->siswa_view($id),
-            'jawaban' => $this->mPenilaian->jawaban_siswa($id)
-        );
-        $this->load->view('Admin/Layout/head');
-        $this->load->view('Admin/Layout/aside');
-        $this->load->view('Admin/vTesTulis', $data);
-        $this->load->view('Admin/Layout/footer');
-    }
-    public function add_nilai($id)
-    {
-        $jawaban = $this->mPenilaian->jawaban_siswa($id);
-        $nilai = 1;
-        $nilai1 = 1;
-        $total = 0;
-        $count = $this->mPenilaian->count_soal($id);
-        foreach ($jawaban as $key => $value) {
-            $total += $this->input->post('nilai' . $nilai1++);
-            $data = array(
-                'nilai_soal' => $this->input->post('nilai' . $nilai++)
-            );
-            $this->db->where('id_jwb', $value->id_jwb);
-            $this->db->update('jwbn_soal_siswa', $data);
-        }
-
-        $hasil = round($total / $count->jml);
-
-
-        $data_total = array(
-            'tes_tulis' => $hasil
-        );
-        $this->db->where('id_siswa', $id);
-        $this->db->update('data_siswa', $data_total);
-
-
-        $this->session->set_flashdata('success', 'Penilaian Tes Tulis Berhasil Disimpan!');
-        redirect('Admin/cPenilaian');
-    }
 }
 
 /* End of file cPenilaian.php */

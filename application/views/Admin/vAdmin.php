@@ -48,6 +48,7 @@
                                         <th>No Telepon</th>
                                         <th>Username</th>
                                         <th>Password</th>
+                                        <th>Level</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -63,6 +64,15 @@
                                             <td><?= $value->no_hp_admin ?></td>
                                             <td><?= $value->username_admin ?></td>
                                             <td><?= $value->password_admin ?></td>
+                                            <td><?php
+                                                if ($value->level == '1') {
+                                                    echo '<span class="badge badge-warning">Admin</span>';
+                                                } else if ($value->level == '2') {
+                                                    echo '<span class="badge badge-info">Penguji Tes Al-Quran</span>';
+                                                } else {
+                                                    echo '<span class="badge badge-danger">Penguji Tes Wawancara</span>';
+                                                }
+                                                ?></td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-lg-6"> <a href="<?= base_url('Admin/cAdmin/delete/' . $value->id_admin) ?>" class="btn btn-block btn-danger"><i class="fas fa-user-times"></i></a></div>
@@ -83,6 +93,7 @@
                                         <th>No Telepon</th>
                                         <th>Username</th>
                                         <th>Password</th>
+                                        <th>Level</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
@@ -132,6 +143,15 @@
                         <label for="exampleInputEmail1">Password</label>
                         <input type="text" name="password" class="form-control" id="exampleInputEmail1" placeholder="Password" required>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Level User</label>
+                        <select class="form-control" name="level">
+                            <option value="">---Pilih User---</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Penguji Tes Al-Quran</option>
+                            <option value="3">Penguji Tes Wawancara</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -178,6 +198,15 @@ foreach ($admin as $key => $value) {
                         <div class="form-group">
                             <label for="exampleInputEmail1">Password</label>
                             <input type="text" name="password" value="<?= $value->password_admin ?>" class="form-control" id="exampleInputEmail1" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Level User</label>
+                            <select class="form-control" name="level">
+                                <option value="">---Pilih User---</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Penguji Tes Al-Quran</option>
+                                <option value="3">Penguji Tes Wawancara</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

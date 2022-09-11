@@ -129,7 +129,14 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $value->nisn ?></td>
                                             <td><?= $value->nama_siswa ?></td>
-                                            <td><?= $value->hasil ?></td>
+                                            <td><?php if ($value->hasil == '0') {
+                                                ?>
+                                                    <span class="badge badge-danger">Belum dianalisis</span>
+                                                <?php
+                                                } else {
+                                                    echo $value->hasil;
+                                                } ?>
+                                            </td>
                                         </tr>
                                     <?php
                                     }

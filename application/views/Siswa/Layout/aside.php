@@ -40,51 +40,57 @@
 						<p>Pendaftaran</p>
 					</a>
 				</li>
-				<li class="nav-item">
-					<?php
-					if ($siswa) {
-					?>
+
+				<?php
+				if ($siswa) {
+				?>
+					<li class="nav-item">
 						<a href="<?= base_url('Siswa/cTesTulis') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'Siswa' && $this->uri->segment(2) == 'cTesTulis') {
 																							echo 'active';
 																						}  ?>">
 							<i class="nav-icon fas fa-book-open"></i>
 							<p>Tes Tulis</p>
 						</a>
-					<?php
-					} else {
-					?>
+					</li>
+					<li class="nav-item">
+						<?php
+						if ($siswa->hasil == '0') {
+						?>
+							<a href="#" class="nav-link   <?php if ($this->uri->segment(1) == 'Siswa' && $this->uri->segment(2) == 'cHasil') {
+																echo 'active';
+															}  ?>">
+							<?php
+						} else {
+							?>
+								<a href="<?= base_url('Siswa/cHasil') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'Siswa' && $this->uri->segment(2) == 'cHasil') {
+																								echo 'active';
+																							}  ?>">
+								<?php
+							}
+								?>
+
+								<i class="nav-icon fas fa-info-circle"></i>
+								<p>Pengumuman Hasil</p>
+								</a>
+					</li>
+				<?php
+				} else {
+				?>
+					<li class="nav-item">
 						<a href="#" class="nav-link   <?php if ($this->uri->segment(1) == 'Siswa' && $this->uri->segment(2) == 'cTesTulis') {
 															echo 'active';
 														}  ?>">
 							<i class="nav-icon fas fa-book-open"></i>
 							<p>Tes Tulis</p>
 						</a>
-					<?php
-					}
-					?>
+					</li>
+				<?php
+				}
+				?>
 
-				</li>
-				<li class="nav-item">
-					<?php
-					if ($siswa->hasil == '0') {
-					?>
-						<a href="#" class="nav-link   <?php if ($this->uri->segment(1) == 'Siswa' && $this->uri->segment(2) == 'cHasil') {
-															echo 'active';
-														}  ?>">
-						<?php
-					} else {
-						?>
-							<a href="<?= base_url('Siswa/cHasil') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'Siswa' && $this->uri->segment(2) == 'cHasil') {
-																							echo 'active';
-																						}  ?>">
-							<?php
-						}
-							?>
 
-							<i class="nav-icon fas fa-info-circle"></i>
-							<p>Pengumuman Hasil</p>
-							</a>
-				</li>
+
+
 
 
 

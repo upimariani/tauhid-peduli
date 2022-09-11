@@ -28,17 +28,29 @@ class cDaftar extends CI_Controller
             $this->load->view('Siswa/vPendaftaran', $data);
             $this->load->view('Siswa/Layout/footer');
         } else {
-            $data = array(
-                'id_siswa' => $this->session->userdata('id'),
-                'nisn' => $this->input->post('nisn'),
-                'asal_sklh' => $this->input->post('asal_sekolah'),
-                'tempat_lahir' => $this->input->post('tempat') . ',',
-                'tanggal_lahir' => $this->input->post('tgl'),
-                'nama_ortu' => $this->input->post('ortu')
-            );
-            $this->mSiswa->daftar($data);
-            $this->session->set_flashdata('success', 'Data Berhasil Didaftarkan!');
-            redirect('Siswa/cDaftar');
+            $config['upload_path']          = './asset/file';
+            $config['allowed_types']        = 'pdf';
+            $config['max_size']             = 5000;
+
+            $this->load->library('upload', $config);
+
+            if (!empty($this->upload->do_upload('file'))) {
+
+                $upload_data = $this->upload->data();
+                $data = array(
+                    'id_siswa' => $this->session->userdata('id'),
+                    'nisn' => $this->input->post('nisn'),
+                    'asal_sklh' => $this->input->post('asal_sekolah'),
+                    'tempat_lahir' => $this->input->post('tempat') . ',',
+                    'tanggal_lahir' => $this->input->post('tgl'),
+                    'nama_ortu' => $this->input->post('ortu'),
+                    'pekerjaan_ortu' => $this->input->post('pekerjaan'),
+                    'file' => $upload_data['file_name']
+                );
+                $this->mSiswa->daftar($data);
+                $this->session->set_flashdata('success', 'Data Berhasil Didaftarkan!');
+                redirect('Siswa/cDaftar');
+            }
         }
     }
     public function update($id)
