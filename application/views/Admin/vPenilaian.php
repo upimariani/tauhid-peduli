@@ -44,6 +44,9 @@
                                         <th>NISN</th>
                                         <th>Nama Siswa</th>
                                         <th>Tempat, Tanggal Lahir</th>
+                                        <th>Nama Orang Tua</th>
+                                        <th>Pekerjaan Orang Tua</th>
+                                        <th>File</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -58,6 +61,9 @@
                                             <td><?= $value->nisn ?></td>
                                             <td><?= $value->nama_siswa ?></td>
                                             <td><?= $value->tempat_lahir ?> <?= $value->tanggal_lahir ?></td>
+                                            <td><?= $value->nama_ortu ?></td>
+                                            <td><?= $value->pekerjaan_ortu ?></td>
+                                            <td><a href="<?= base_url('asset/file/' . $value->file) ?>"><?= $value->file ?></a></td>
                                             <td><?php
                                                 if ($value->nilai_ing == 0) {
                                                 ?>
@@ -70,7 +76,7 @@
                                                 }
                                                 ?>
                                             </td>
-                                            <td class="text-center"> <a href="<?= base_url('Admin/cPenilaian/nilai_raport/' . $value->id_dt_siswa) ?>" class="btn btn-block btn-success"><i class="fas fa-user-cog"></i></a>
+                                            <td class="text-center"> <a href="<?= base_url('Admin/cPenilaian/nilai_raport/' . $value->id_siswa) ?>" class="btn btn-block btn-success"><i class="fas fa-user-cog"></i></a>
 
                                             </td>
                                         </tr>
@@ -85,6 +91,9 @@
                                         <th>NISN</th>
                                         <th>Nama Siswa</th>
                                         <th>Tempat, Tanggal Lahir</th>
+                                        <th>Nama Orang Tua</th>
+                                        <th>Pekerjaan Orang Tua</th>
+                                        <th>File</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>

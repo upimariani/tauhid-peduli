@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Sep 2022 pada 23.35
+-- Waktu pembuatan: 11 Sep 2022 pada 17.39
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -33,15 +33,16 @@ CREATE TABLE `admin` (
   `alamat_admin` text NOT NULL,
   `no_hp_admin` varchar(15) NOT NULL,
   `username_admin` varchar(50) NOT NULL,
-  `password_admin` varchar(50) NOT NULL
+  `password_admin` varchar(50) NOT NULL,
+  `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama_admin`, `alamat_admin`, `no_hp_admin`, `username_admin`, `password_admin`) VALUES
-(1, 'admin', 'kuningan', '089765456765', 'admin', 'admin');
+INSERT INTO `admin` (`id_admin`, `nama_admin`, `alamat_admin`, `no_hp_admin`, `username_admin`, `password_admin`, `level`) VALUES
+(1, 'admin', 'kuningan', '089765456765', 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -57,6 +58,11 @@ CREATE TABLE `data_siswa` (
   `tempat_lahir` varchar(50) NOT NULL,
   `tanggal_lahir` varchar(15) NOT NULL,
   `nama_ortu` varchar(50) NOT NULL,
+  `pekerjaan_ortu` text NOT NULL,
+  `pendapatan_ortu` varchar(50) DEFAULT NULL,
+  `file` text NOT NULL,
+  `sktm` text DEFAULT NULL,
+  `raport` text DEFAULT NULL,
   `nilai_ing` int(11) NOT NULL,
   `nilai_mtk` int(11) NOT NULL,
   `nilai_indo` int(11) NOT NULL,
@@ -71,9 +77,9 @@ CREATE TABLE `data_siswa` (
 -- Dumping data untuk tabel `data_siswa`
 --
 
-INSERT INTO `data_siswa` (`id_dt_siswa`, `id_siswa`, `nisn`, `asal_sklh`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nilai_ing`, `nilai_mtk`, `nilai_indo`, `tes_tulis`, `tes_baca`, `tes_wawancara`, `hasil`, `keputusan`) VALUES
-(1, 1, '123456', 'SMA 1 Kuningan', 'Kuningan,', '2022-09-01', 'Ahmad', 70, 80, 80, 3, 80, 90, 0.476, 2),
-(2, 2, '78908766', 'SMA 1 Cigugur', 'Kuningan,', '2021-06-15', 'Maman', 70, 80, 90, 2, 90, 80, 0.524, 1);
+INSERT INTO `data_siswa` (`id_dt_siswa`, `id_siswa`, `nisn`, `asal_sklh`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `pekerjaan_ortu`, `pendapatan_ortu`, `file`, `sktm`, `raport`, `nilai_ing`, `nilai_mtk`, `nilai_indo`, `tes_tulis`, `tes_baca`, `tes_wawancara`, `hasil`, `keputusan`) VALUES
+(1, 1, '251752712', 'sma 1 kuningan', 'kuningan,', '2022-09-05', 'juhe', 'buruh', '750000000', '5_6285095441197434212.pdf', NULL, NULL, 0, 0, 0, 1, 0, 0, 0, 0),
+(2, 2, '1234567', 'jepang', 'jepang,', '2022-09-06', 'narito', 'ninja', '1200000', '260-Article_Text-469-1-10-20190407.pdf', '260-Article_Text-469-1-10-20190407.pdf', '260-Article_Text-469-1-10-20190407.pdf', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -94,16 +100,11 @@ CREATE TABLE `jwbn_soal_siswa` (
 --
 
 INSERT INTO `jwbn_soal_siswa` (`id_jwb`, `id_siswa`, `id_soal`, `jwbn_siswa`, `nilai_soal`) VALUES
-(1, 1, 1, '<p>contoh jawaban 1</p>', 2),
-(2, 1, 2, '<p>contoh jawaban 2<br></p>', 3),
-(3, 1, 3, '<p>contoh jawaban 3<br></p>', 2),
-(4, 1, 4, '<p>contoh jawaban 4<br></p>', 3),
-(5, 1, 5, '<p>contoh jawaban 5<br></p>', 3),
-(6, 2, 1, '<p>adgkjufr</p>', 2),
-(7, 2, 2, '<p>dfgds</p>', 1),
-(8, 2, 3, '<p>vcbvvc</p>', 3),
-(9, 2, 4, '<p>fdg</p>', 1),
-(10, 2, 5, '<p>sdfdsfs</p>', 1);
+(1, 1, 1, '<p>sah</p>', 0),
+(2, 1, 2, '<p>sah</p>', 0),
+(3, 1, 3, '<p>sah</p>', 0),
+(4, 1, 4, '<p>sah</p>', 0),
+(5, 1, 5, '<p>sah</p>', 0);
 
 -- --------------------------------------------------------
 
@@ -126,8 +127,8 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nama_siswa`, `jk`, `alamat_siswa`, `no_hp_siswa`, `username_siswa`, `password_siswa`) VALUES
-(1, 'Dinda', 'Perempuan', 'Kuningan, Jawa Barat', '0875698745633', 'siswa', 'siswa'),
-(2, 'Zaenal', 'Laki - Laki', 'Ciawigebang, Kuningan', '0875698745633', 'siswa1', 'siswa1');
+(1, 'jamal', 'laki-laki', 'kuningan', '089192819281', 'jamal', 'jamal'),
+(2, 'sayang', 'Perempuan', 'waduk darma', '089192819281', 'WINA', 'Asu12345');
 
 -- --------------------------------------------------------
 
@@ -194,7 +195,7 @@ ALTER TABLE `soal`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_siswa`
@@ -206,7 +207,7 @@ ALTER TABLE `data_siswa`
 -- AUTO_INCREMENT untuk tabel `jwbn_soal_siswa`
 --
 ALTER TABLE `jwbn_soal_siswa`
-  MODIFY `id_jwb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_jwb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`

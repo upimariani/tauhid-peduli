@@ -30,7 +30,7 @@ class mPenilaian extends CI_Model
     }
 
 
-    //admin
+    //penilai soal
     public function jawaban_siswa($id)
     {
         $this->db->select('*');

@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<form action="<?= base_url('PenilaiSoal/cPenilaian/add_nilai/' . $siswa_view->id_siswa) ?>" method="POST">
+<form action="<?= base_url('PenilaiSoal/cPenilaianSoal/add_nilai/' . $siswa_view->id_siswa) ?>" method="POST">
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">

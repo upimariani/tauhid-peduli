@@ -65,7 +65,7 @@ class cAuthSiswa extends CI_Controller
 					'nama_siswa' => $this->input->post('nama'),
 					'jk' => $this->input->post('jk'),
 					'alamat_siswa' => $this->input->post('alamat'),
-					'no_hp_siswa' => $this->input->post('no_hp'),
+					'no_hp_siswa' => '+62' . $this->input->post('no_hp'),
 					'username_siswa' => $this->input->post('username'),
 					'password_siswa' => $this->input->post('kon_password'),
 				);

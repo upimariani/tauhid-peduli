@@ -13,7 +13,7 @@
             <div class="image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Selamat Datang, <br>Penguji Wawancara</a>
+                <a href="#" class="d-block">Selamat Datang, <br>Penilai Soal Tes</a>
             </div>
         </div>
 
@@ -23,18 +23,18 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="<?= base_url('PengujiWawancara/cDashboard') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'PengujiWawancara' && $this->uri->segment(2) == 'cDashboard') {
-                                                                                                    echo 'active';
-                                                                                                }  ?>">
+                    <a href="<?= base_url('PenilaiSoal/cDashboard') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'PenilaiSoal' && $this->uri->segment(2) == 'cDashboard') {
+                                                                                                echo 'active';
+                                                                                            }  ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('PengujiWawancara/cPenilaianWawancara') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'PengujiWawancara' && $this->uri->segment(2) == 'cPenilaianWawancara') {
-                                                                                                            echo 'active';
-                                                                                                        }  ?>">
+                    <a href="<?= base_url('PenilaiSoal/cPenilaianSoal') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'PenilaiSoal' && $this->uri->segment(2) == 'cPenilaianSoal') {
+                                                                                                    echo 'active';
+                                                                                                }  ?>">
                         <i class="nav-icon fas fa-info-circle"></i>
                         <p>Penilaian Tes Wawancara</p>
                     </a>

@@ -91,22 +91,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"><strong>Hasil Rangking Siswa Metode Weight Product</strong></h3><br><br>
-                            <!-- <div class="row">
-                                <div class="col-lg-6">
-                                    <select class="form-control">
-                                        <option>---Pilih Jumlah Teratas---</option>
-                                        <?php
-                                        for ($i = 1; $i <= 200; $i++) {
-                                        ?>
-                                            <option><?= $i ?></option>
-                                        <?php
-                                        }
-                                        ?>
 
-                                    </select>
-                                </div>
-                                <div class="col-lg-6"><button class="btn btn-warning"><i class="fas fa-filter"></i> Filter</button></div>
-                            </div> -->
 
                         </div>
                         <!-- /.card-header -->

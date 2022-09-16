@@ -69,8 +69,10 @@
                                                     echo '<span class="badge badge-warning">Admin</span>';
                                                 } else if ($value->level == '2') {
                                                     echo '<span class="badge badge-info">Penguji Tes Al-Quran</span>';
-                                                } else {
+                                                } else if ($value->level == '3') {
                                                     echo '<span class="badge badge-danger">Penguji Tes Wawancara</span>';
+                                                } else if ($value->level == '4') {
+                                                    echo '<span class="badge badge-primary">Penilai Tes Tulis</span>';
                                                 }
                                                 ?></td>
                                             <td>
@@ -150,6 +152,7 @@
                             <option value="1">Admin</option>
                             <option value="2">Penguji Tes Al-Quran</option>
                             <option value="3">Penguji Tes Wawancara</option>
+                            <option value="4">Penilai Tes Tulis</option>
                         </select>
                     </div>
                 </div>
@@ -203,9 +206,18 @@ foreach ($admin as $key => $value) {
                             <label for="exampleInputEmail1">Level User</label>
                             <select class="form-control" name="level">
                                 <option value="">---Pilih User---</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Penguji Tes Al-Quran</option>
-                                <option value="3">Penguji Tes Wawancara</option>
+                                <option value="1" <?php if ($value->level == '1') {
+                                                        echo 'selected';
+                                                    } ?>>Admin</option>
+                                <option value="2" <?php if ($value->level == '2') {
+                                                        echo 'selected';
+                                                    } ?>>Penguji Tes Al-Quran</option>
+                                <option value="3" <?php if ($value->level == '3') {
+                                                        echo 'selected';
+                                                    } ?>>Penguji Tes Wawancara</option>
+                                <option value="4" <?php if ($value->level == '4') {
+                                                        echo 'selected';
+                                                    } ?>>Penilai Tes Tulis</option>
                             </select>
                         </div>
                     </div>

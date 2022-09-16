@@ -33,8 +33,10 @@ class cAuthAdmin extends CI_Controller
                     redirect('Admin/cDashboard');
                 } else if ($login->level == '2') {
                     redirect('PengujiAlQuran/cDashboard');
-                } else {
+                } else if ($login->level == '3') {
                     redirect('PengujiWawancara/cDashboard');
+                } else {
+                    redirect('PenilaiSoal/cDashboard');
                 }
             } else {
                 $this->session->set_flashdata('error', 'Username dan Password Salah!!!');

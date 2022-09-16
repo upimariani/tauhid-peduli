@@ -24,10 +24,10 @@ class cPenilaianSoal extends CI_Controller
             'siswa_view' => $this->mPenilaian->siswa_view($id),
             'jawaban' => $this->mPenilaian->jawaban_siswa($id)
         );
-        $this->load->view('Admin/Layout/head');
-        $this->load->view('Admin/Layout/aside');
-        $this->load->view('Admin/vTesTulis', $data);
-        $this->load->view('Admin/Layout/footer');
+        $this->load->view('PenilaiSoal/Layout/head');
+        $this->load->view('PenilaiSoal/Layout/aside');
+        $this->load->view('PenilaiSoal/vJawabanSoal', $data);
+        $this->load->view('PenilaiSoal/Layout/footer');
     }
     public function add_nilai($id)
     {
@@ -56,7 +56,7 @@ class cPenilaianSoal extends CI_Controller
 
 
         $this->session->set_flashdata('success', 'Penilaian Tes Tulis Berhasil Disimpan!');
-        redirect('Admin/cPenilaian');
+        redirect('PenilaiSoal/cPenilaianSoal');
     }
 }
 

@@ -78,7 +78,7 @@
                                                 <?php
                                                 if ($value->tes_tulis == 1) {
                                                 ?>
-                                                    <a href="<?= base_url('PenilaiSoal/cPenilaian/nilai_tes_tulis/' . $value->id_dt_siswa) ?>" class="btn btn-block btn-warning"><i class="fas fa-user-cog"></i></a>
+                                                    <a href="<?= base_url('PenilaiSoal/cPenilaianSoal/nilai_tes_tulis/' . $value->id_siswa) ?>" class="btn btn-block btn-warning"><i class="fas fa-user-cog"></i></a>
                                                 <?php
                                                 } else {
                                                 ?>

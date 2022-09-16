@@ -41,7 +41,7 @@ class cPerhitungan extends CI_Controller
 				$var_raport[] = 1;
 			} else if ($total_raport >= 236 && $total_raport <= 241) {
 				$var_raport[] = 2;
-			} else if ($total_raport >= 242 && $total_raport <= 254) {
+			} else if ($total_raport >= 242 && $total_raport <= 300) {
 				$var_raport[] = 3;
 			}
 

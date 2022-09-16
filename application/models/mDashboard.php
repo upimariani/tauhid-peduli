@@ -20,6 +20,31 @@ class mDashboard extends CI_Model
         $data['siswa_tdk_valid'] = $this->db->query("SELECT COUNT(nisn) as jml_tdk_valid FROM data_siswa WHERE hasil='0'")->row();
         return $data;
     }
+
+    //dashboard tes baca al quran
+    public function lap_baca_alquran()
+    {
+        $data['baca'] = $this->db->query("SELECT * FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa WHERE tes_baca!='0'")->result();
+        $data['jml_sudah'] = $this->db->query("SELECT COUNT(tes_baca) as jml FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa WHERE tes_baca!='0'")->row();
+        $data['jml_belum'] = $this->db->query("SELECT COUNT(tes_baca) as jml FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa ='0'")->row();
+        return $data;
+    }
+    //dashboard tes wawancara
+    public function lap_wawancara()
+    {
+        $data['wawancara'] = $this->db->query("SELECT * FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa WHERE tes_wawancara!='0'")->result();
+        $data['jml_sudah'] = $this->db->query("SELECT COUNT(tes_wawancara) as jml FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa WHERE tes_wawancara!='0'")->row();
+        $data['jml_belum'] = $this->db->query("SELECT COUNT(tes_wawancara) as jml FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa ='0'")->row();
+        return $data;
+    }
+    //dashboard tes tulis
+    public function lap_tulis()
+    {
+        $data['tulis'] = $this->db->query("SELECT * FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa WHERE tes_tulis!='0' && 1")->result();
+        $data['jml_sudah'] = $this->db->query("SELECT COUNT(tes_tulis) as jml FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa WHERE tes_tulis!='0' && 1")->row();
+        $data['jml_belum'] = $this->db->query("SELECT COUNT(tes_tulis) as jml FROM `data_siswa` JOIN siswa ON data_siswa.id_siswa=siswa.id_siswa ='0' && '1'")->row();
+        return $data;
+    }
 }
 
 /* End of file mDashboard.php */
