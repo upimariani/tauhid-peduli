@@ -33,32 +33,43 @@ class cDaftar extends CI_Controller
 			$config['max_size']             = 5000;
 
 			$this->load->library('upload', $config);
-			$this->upload->do_upload('file1');
-			$upload_data1 = $this->upload->data();
-			$data = array(
-				'id_siswa' => $this->session->userdata('id'),
-				'nisn' => $this->input->post('nisn'),
-				'asal_sklh' => $this->input->post('asal_sekolah'),
-				'tempat_lahir' => $this->input->post('tempat') . ',',
-				'tanggal_lahir' => $this->input->post('tgl'),
-				'nama_ortu' => $this->input->post('ortu'),
-				'pekerjaan_ortu' => $this->input->post('pekerjaan'),
-				'pendapatan_ortu' => $this->input->post('pendapatan'),
-				'file' => $upload_data1['file_name']
-			);
 
-			$this->upload->do_upload('file2');
-			$upload_data2 = $this->upload->data();
-			$data['sktm'] = $upload_data2['file_name'];
+			if (!$this->upload->do_upload('file1') | !$this->upload->do_upload('file2') | !$this->upload->do_upload('file3')) {
+				$data = array(
+					'siswa' => $this->mSiswa->select_siswa()
+				);
+				$this->load->view('Siswa/Layout/head');
+				$this->load->view('Siswa/Layout/aside');
+				$this->load->view('Siswa/vPendaftaran', $data);
+				$this->load->view('Siswa/Layout/footer');
+			} else {
+				$this->upload->do_upload('file1');
+				$upload_data1 = $this->upload->data();
+				$data = array(
+					'id_siswa' => $this->session->userdata('id'),
+					'nisn' => $this->input->post('nisn'),
+					'asal_sklh' => $this->input->post('asal_sekolah'),
+					'tempat_lahir' => $this->input->post('tempat') . ',',
+					'tanggal_lahir' => $this->input->post('tgl'),
+					'nama_ortu' => $this->input->post('ortu'),
+					'pekerjaan_ortu' => $this->input->post('pekerjaan'),
+					'pendapatan_ortu' => $this->input->post('pendapatan'),
+					'file' => $upload_data1['file_name']
+				);
+
+				$this->upload->do_upload('file2');
+				$upload_data2 = $this->upload->data();
+				$data['sktm'] = $upload_data2['file_name'];
 
 
-			$this->upload->do_upload('file2');
-			$upload_data3 =  $this->upload->data();
-			$data['raport'] = $upload_data3['file_name'];
+				$this->upload->do_upload('file3');
+				$upload_data3 =  $this->upload->data();
+				$data['raport'] = $upload_data3['file_name'];
 
-			$this->mSiswa->daftar($data);
-			$this->session->set_flashdata('success', 'Data Berhasil Didaftarkan!');
-			redirect('Siswa/cDaftar');
+				$this->mSiswa->daftar($data);
+				$this->session->set_flashdata('success', 'Data Berhasil Didaftarkan!');
+				redirect('Siswa/cDaftar');
+			}
 		}
 	}
 	public function update($id)

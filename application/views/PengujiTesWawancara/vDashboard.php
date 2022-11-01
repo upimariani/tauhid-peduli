@@ -58,7 +58,7 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><strong>Hasil Penilaian Tes Baca Al-Quran</strong></h3><br><br>
+                            <h3 class="card-title"><strong>Hasil Penilaian Tes Wawancara</strong></h3><br><br>
 
 
                         </div>

@@ -43,6 +43,8 @@ class cPerhitungan extends CI_Controller
 				$var_raport[] = 2;
 			} else if ($total_raport >= 242 && $total_raport <= 300) {
 				$var_raport[] = 3;
+			} else if ($total_raport <= 219) {
+				$var_raport[] = 1;
 			}
 
 			//variabel tes tulis
@@ -96,7 +98,7 @@ class cPerhitungan extends CI_Controller
 		// }
 		// echo '<hr>';
 
-		for ($m = 0; $m < sizeof($var_wawancara); $m++) {
+		for ($m = 0; $m < sizeof($var_tulis); $m++) {
 			// echo $var_raport[$m];
 			// echo $var_tulis[$m];
 			// echo $var_baca[$m];
@@ -111,13 +113,13 @@ class cPerhitungan extends CI_Controller
 		for ($tot_pow = 0; $tot_pow < sizeof($s); $tot_pow++) {
 			$tot += $s[$tot_pow];
 		}
-		// echo '<br>Total ' .  $tot;
+		echo '<br>Total ' .  $tot;
 
 
 		$vektor = array();
 		for ($pow = 0; $pow < sizeof($s); $pow++) {
 			echo '<br>' .  $s[$pow];
-			$vektor[] = round($s[$pow] / $tot, 3);
+			$vektor[] = round($s[$pow] / $tot, 4);
 		}
 
 

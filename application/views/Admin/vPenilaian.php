@@ -46,7 +46,9 @@
                                         <th>Tempat, Tanggal Lahir</th>
                                         <th>Nama Orang Tua</th>
                                         <th>Pekerjaan Orang Tua</th>
-                                        <th>File</th>
+                                        <th>Kartu Keluarga</th>
+                                        <th>SKTM</th>
+                                        <th>Raport</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -64,6 +66,8 @@
                                             <td><?= $value->nama_ortu ?></td>
                                             <td><?= $value->pekerjaan_ortu ?></td>
                                             <td><a href="<?= base_url('asset/file/' . $value->file) ?>"><?= $value->file ?></a></td>
+                                            <td><a href="<?= base_url('asset/file/' . $value->sktm) ?>"><?= $value->sktm ?></a></td>
+                                            <td><a href="<?= base_url('asset/file/' . $value->raport) ?>"><?= $value->raport ?></a></td>
                                             <td><?php
                                                 if ($value->nilai_ing == 0) {
                                                 ?>

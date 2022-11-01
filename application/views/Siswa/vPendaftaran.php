@@ -145,7 +145,7 @@
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Asal Sekolah</label>
-									<input type="text" name="asal_sekolah" value="Daarut Tauhid Peduli" class="form-control" id="exampleInputPassword1" placeholder="Asal Sekolah" disabled>
+									<input type="text" name="asal_sekolah" class="form-control" id="exampleInputPassword1" placeholder="Asal Sekolah">
 									<?= form_error('asal_sekolah', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="form-group">
