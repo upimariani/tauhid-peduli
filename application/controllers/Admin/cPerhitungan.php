@@ -31,6 +31,7 @@ class cPerhitungan extends CI_Controller
 		$var_raport = array();
 		$var_tulis = array();
 		$var_baca = array();
+		$var_sktm = array();
 		$var_wawancara = array();
 		$s = array();
 		foreach ($siswa as $key => $value) {
@@ -73,6 +74,13 @@ class cPerhitungan extends CI_Controller
 			} else if ($value->tes_wawancara == '90') {
 				$var_wawancara[] = 3;
 			}
+
+			//surat sktm
+			if ($value->sktm == 'NULL') {
+				$var_sktm[] = 1;
+			} else {
+				$var_sktm[] = 2;
+			}
 		}
 
 		// for ($i = 0; $i < sizeof($var_raport); $i++) {
@@ -105,7 +113,7 @@ class cPerhitungan extends CI_Controller
 			// echo $var_wawancara[$m];
 			// echo '<br>';
 
-			$s[] = round((pow($var_raport[$m], 0.3)) * (pow($var_tulis[$m], 0.2)) * (pow($var_baca[$m], 0.2)) * (pow($var_wawancara[$m], 0.3)), 1);
+			$s[] = round((pow($var_raport[$m], 0.3)) * (pow($var_tulis[$m], 0.2)) * (pow($var_baca[$m], 0.2)) * (pow($var_wawancara[$m], 0.3)) * (pow($var_sktm[$m], 0.3)), 1);
 		}
 
 		//total s -> sn
@@ -113,12 +121,12 @@ class cPerhitungan extends CI_Controller
 		for ($tot_pow = 0; $tot_pow < sizeof($s); $tot_pow++) {
 			$tot += $s[$tot_pow];
 		}
-		echo '<br>Total ' .  $tot;
+		// echo '<br>Total ' .  $tot;
 
 
 		$vektor = array();
 		for ($pow = 0; $pow < sizeof($s); $pow++) {
-			echo '<br>' .  $s[$pow];
+			// echo '<br>' .  $s[$pow];
 			$vektor[] = round($s[$pow] / $tot, 4);
 		}
 

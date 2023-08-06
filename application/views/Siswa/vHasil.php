@@ -48,7 +48,18 @@
                 Total Perhitungan <strong>
                     <h1><?= $siswa->hasil ?></h1>
                 </strong>
-                <h5>Dengan demikian anda mendapatkan peringkat ke - <strong><?= $siswa->keputusan ?></strong></h5>
+                <?php
+                if ($siswa->keputusan >= 10) {
+                ?>
+                    <h5>Dengan demikian anda mendapatkan hasil belum lolos...</h5>
+                <?php
+                } else {
+                ?>
+                    <h5>Dengan demikian anda mendapatkan peringkat ke - <strong><?= $siswa->keputusan ?></strong></h5>
+                <?php
+                }
+                ?>
+
             </div>
         </div>
     </section>
